@@ -1,29 +1,150 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AuraEdit | Editing Agency</title>
+<title>AuraEdit | Premium Editing Agency</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+<!-- AOS for scroll animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+<!-- tsparticles -->
+<script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+
 <style>
-body{margin:0;font-family:Arial;background:#0b1320;color:white;text-align:center}
-nav{padding:20px}
-nav a{color:#00e5ff;margin:0 15px;text-decoration:none;font-weight:bold}
-section{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
-button{padding:15px 30px;border:none;border-radius:30px;background:#00e5ff;font-weight:bold}
+/* GENERAL */
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#0b1320;color:#fff;overflow-x:hidden;}
+a{text-decoration:none;}
+nav{position:sticky;top:0;z-index:1000;background:rgba(0,0,0,.3);backdrop-filter:blur(10px);display:flex;justify-content:center;gap:20px;padding:20px;}
+nav a{color:#00e5ff;font-weight:600;transition:.3s;}
+nav a:hover{color:#00fff0;}
+
+/* HERO SLIDER */
+.swiper{width:100%;max-width:1000px;margin:auto;margin-top:40px;border-radius:20px;overflow:hidden;position:relative;}
+.swiper-slide{display:flex;flex-direction:column;align-items:center;justify-content:center;height:80vh;position:relative;text-align:center;}
+.hero-bg{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;opacity:.4;z-index:-1;}
+
+/* PARTICLES */
+#tsparticles{position:absolute;width:100%;height:80vh;z-index:0;top:0;left:0;}
+
+/* HERO TEXT */
+h1{font-size:clamp(30px,5vw,60px);margin-bottom:15px;}
+h1 span{color:#00e5ff;}
+p{font-size:clamp(14px,2.5vw,20px);opacity:.9;margin-bottom:25px;}
+.btn{padding:14px 38px;border-radius:30px;background:linear-gradient(135deg,#00e5ff,#00bcd4);color:#000;font-weight:600;transition:.3s;}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 25px rgba(0,229,255,.6);}
+
+/* SECTIONS */
+section{padding:80px 20px;text-align:center;position:relative;z-index:1;}
+section h2{font-size:clamp(26px,4vw,40px);margin-bottom:20px;}
+
+/* WORK CARDS */
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:30px;margin-top:40px;}
+.card{background:rgba(255,255,255,.08);backdrop-filter:blur(10px);padding:20px;border-radius:20px;transition:.3s;}
+.card img{width:100%;border-radius:15px;margin-bottom:15px;}
+.card:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(0,0,0,.5);}
+
+/* CONTACT */
+.contact p{margin-bottom:15px;font-size:16px;}
+.whatsapp{position:fixed;bottom:20px;right:20px;padding:18px 28px;background:#25d366;color:#fff;border-radius:50px;font-weight:600;box-shadow:0 0 20px rgba(37,211,102,.6);z-index:999;}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+.btn{width:100%;}
+.work-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-<a href="index.html">Home</a>
-<a href="work.html">Our Work</a>
-<a href="contact.html">Contact</a>
+<a href="#hero">Home</a>
+<a href="#work">Our Work</a>
+<a href="#contact">Contact</a>
 </nav>
 
-<section>
-<h1>We are <span style="color:#00e5ff">AuraEdit</span></h1>
-<p>Premium cinematic video & reel editing agency</p>
-<a href="work.html"><button>View Our Work</button></a>
+<!-- PARTICLES -->
+<div id="tsparticles"></div>
+
+<!-- HERO SLIDER -->
+<div id="hero" class="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <img src="https://images.pexels.com/photos/270895/pexels-photo-270895.jpeg" class="hero-bg" alt="Editing Hero">
+      <h1 data-aos="fade-up">We create <span>Cinematic Edits</span></h1>
+      <p data-aos="fade-up" data-aos-delay="200">High-end video & reel editing for creators and brands</p>
+      <a class="btn" href="#work" data-aos="fade-up" data-aos-delay="400">View Work</a>
+    </div>
+    <div class="swiper-slide">
+      <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg" class="hero-bg" alt="Editing Hero">
+      <h1 data-aos="fade-up">Premium <span>Reels & Ads</span></h1>
+      <p data-aos="fade-up" data-aos-delay="200">Instagram • YouTube • Brand promotions</p>
+      <a class="btn" href="#work" data-aos="fade-up" data-aos-delay="400">View Work</a>
+    </div>
+    <div class="swiper-slide">
+      <img src="https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg" class="hero-bg" alt="Editing Hero">
+      <h1 data-aos="fade-up">Grow Your <span>Brand Faster</span></h1>
+      <p data-aos="fade-up" data-aos-delay="200">Editing that converts views into clients</p>
+      <a class="btn" href="#contact" data-aos="fade-up" data-aos-delay="400">Contact Us</a>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- WORK SECTION -->
+<section id="work">
+<h2 data-aos="fade-up">Our Work</h2>
+<div class="work-grid">
+  <div class="card" data-aos="fade-up"><img src="https://images.pexels.com/photos/159711/editing-video.png" alt="Reels"><p>Instagram Reels Editing</p></div>
+  <div class="card" data-aos="fade-up" data-aos-delay="100"><img src="https://images.pexels.com/photos/159711/editing-video.png" alt="YouTube"><p>YouTube Videos</p></div>
+  <div class="card" data-aos="fade-up" data-aos-delay="200"><img src="https://images.pexels.com/photos/159711/editing-video.png" alt="Brand Ads"><p>Brand Ads</p></div>
+</div>
 </section>
+
+<!-- CONTACT SECTION -->
+<section id="contact" class="contact">
+<h2 data-aos="fade-up">Connect With Us</h2>
+<p data-aos="fade-up" data-aos-delay="100">Email: auraedit@gmail.com</p>
+<p data-aos="fade-up" data-aos-delay="200">Instagram: @auraedit</p>
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank">WhatsApp</a>
+</section>
+
+<!-- SCRIPTS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script>
+// AOS Scroll Animations
+AOS.init({duration:1000,once:true});
+
+// Swiper Slider
+const swiper = new Swiper('.swiper', {
+  loop:true,
+  autoplay:{delay:4000,disableOnInteraction:false},
+  pagination:{el:'.swiper-pagination',clickable:true},
+});
+
+// Particles
+tsParticles.load("tsparticles", {
+  particles: {
+    number:{value:40},
+    color:{value:"#00e5ff"},
+    shape:{type:"circle"},
+    opacity:{value:0.3},
+    size:{value:3},
+    move:{enable:true,speed:1},
+  },
+  interactivity:{events:{onhover:{enable:true,mode:"repulse"}}}
+});
+</script>
 
 </body>
 </html>
