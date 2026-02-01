@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AuraEdit — Premium Editing Agency</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+
+body{
+background:radial-gradient(circle at top,#1b3a4b,#0b1320);
+color:#fff;
+overflow-x:hidden;
+}
+
+/* ---------- HERO SLIDER ---------- */
+header{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.slider{
+width:100%;
+max-width:900px;
+position:relative;
+}
+
+.slide{
+display:none;
+animation:zoomFade 1.2s ease;
+}
+
+.slide.active{display:block}
+
+h1{
+font-size:3rem;
+margin-bottom:15px;
+}
+
+h1 span{color:#00e5ff}
+
+p{opacity:.85;margin-bottom:25px}
+
+.btn{
+padding:14px 36px;
+border-radius:30px;
+border:none;
+background:linear-gradient(135deg,#00e5ff,#00bcd4);
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 30px rgba(0,229,255,.6);
+}
+
+/* ---------- SECTIONS ---------- */
+section{
+padding:90px 10%;
+text-align:center;
+}
+
+.services{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:30px;
+margin-top:40px;
+}
+
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+padding:30px;
+border-radius:22px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 15px 40px rgba(0,229,255,.25);
+}
+
+/* ---------- WHATSAPP BUTTON ---------- */
+.whatsapp{
+position:fixed;
+right:18px;
+bottom:20px;
+width:60px;
+height:60px;
+background:#25D366;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+color:#fff;
+text-decoration:none;
+box-shadow:0 10px 30px rgba(37,211,102,.6);
+animation:pulse 2s infinite;
+z-index:999;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+padding:30px;
+background:rgba(0,0,0,.3);
+opacity:.8;
+text-align:center;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes zoomFade{
+from{opacity:0;transform:scale(.9)}
+to{opacity:1;transform:scale(1)}
+}
+
+@keyframes pulse{
+0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}
+70%{box-shadow:0 0 0 15px rgba(37,211,102,0)}
+100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="slider" id="slider">
+<div class="slide active">
+<h1>Cinematic <span>Editing</span></h1>
+<p>High‑end cinematic edits for creators & brands</p>
+<button class="btn">Get Started</button>
+</div>
+
+<div class="slide">
+<h1>Viral <span>Reels & Shorts</span></h1>
+<p>Optimized edits for Instagram, YouTube & TikTok</p>
+<button class="btn">View Work</button>
+</div>
+
+<div class="slide">
+<h1>Grow With <span>AuraEdit</span></h1>
+<p>Turn raw clips into premium visuals</p>
+<button class="btn">Contact Us</button>
+</div>
+</div>
+</header>
+
+<section>
+<h2>About Us</h2>
+<p style="max-width:800px;margin:auto">
+AuraEdit is a premium creative editing agency delivering cinematic visuals,
+viral short‑form content and powerful brand storytelling.
+</p>
+</section>
+
+<section>
+<h2>Our Work</h2>
+<div class="services">
+<div class="card">🎬 Cinematic Video Editing</div>
+<div class="card">📱 Reels & Shorts</div>
+<div class="card">✨ Brand Visuals</div>
+</div>
+</section>
+
+<section>
+<h2>Contact</h2>
+<p>Email: auraedit@gmail.com</p>
+<p>Instagram: @auraedit.agency</p>
+</section>
+
+<footer>
+© 2026 AuraEdit Agency
+</footer>
+
+<!-- WhatsApp Button -->
+<a class="whatsapp" href="https://wa.me/919876543210" target="_blank">💬</a>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+let index=0;
+
+setInterval(nextSlide,4000);
+
+function nextSlide(){
+slides[index].classList.remove('active');
+index=(index+1)%slides.length;
+slides[index].classList.add('active');
+}
+
+/* ---- SWIPE SUPPORT ---- */
+let startX=0;
+const slider=document.getElementById('slider');
+
+slider.addEventListener('touchstart',e=>{
+startX=e.touches[0].clientX;
+});
+
+slider.addEventListener('touchend',e=>{
+let endX=e.changedTouches[0].clientX;
+if(startX-endX>50){ nextSlide(); }
+if(endX-startX>50){
+slides[index].classList.remove('active');
+index=(index-1+slides.length)%slides.length;
+slides[index].classList.add('active');
+}
+});
+</script>
+
+</body>
+</html>
